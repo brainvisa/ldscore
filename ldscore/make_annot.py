@@ -34,7 +34,7 @@ def make_annot_files(args, bed_for_annot):
     else:
         df_annot.to_csv(args.annot_file, sep="\t", index=False)
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--gene-set-file', type=str, help='a file of gene names, one line per gene.')
     parser.add_argument('--gene-coord-file', type=str, default='ENSG_coord.txt', help='a file with columns GENE, CHR, START, and END, where START and END are base pair coordinates of TSS and TES. This file can contain more genes than are in the gene set. We provide ENSG_coord.txt as a default.')

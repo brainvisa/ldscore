@@ -1,0 +1,49 @@
+[project]
+name = "ldscore"
+dynamic = ["version"]
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "CeCILL-B"}
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved",
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Natural Language :: English",
+]
+
+
+dependencies = [
+    "bitarray>=2.6.0",
+    "nose>=1.3.7",
+    "pybedtools>=0.9.0",
+    "scipy>=1.9.2",
+    "numpy>=1.23.3",
+    "pandas>=1.5.0"
+]
+
+[project.scripts]
+ldsc = "ldscore.ldsc:main"
+make_annot = "ldscore.make_annot:main"
+munge_sumstats = "ldscore.munge_sumstats:main"
+
+
+[project.urls]
+repository = "https://github.com/brainvisa/ldscore"
+
+[tool.setuptools-git-versioning]
+enabled = true
+version_file = "VERSION"
+
+[build-system]
+requires = ["setuptools >= 61.0", "setuptools-git-versioning"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+exclude = ["test"]
