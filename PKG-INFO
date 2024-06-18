@@ -1,3 +1,14 @@
+Metadata-Version: 2.1
+Name: ldsc
+Version: 2.0.1
+Summary: LD Score Regression (LDSC)
+Home-page: http://github.com/bulik/ldsc
+Author: Brendan Bulik-Sullivan and Hilary Finucane
+Author-email: 
+License: GPLv3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 
 # LDSC (LD SCore) `v2.0.0`
 
