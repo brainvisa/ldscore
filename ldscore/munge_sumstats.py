@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+import warnings
+# Ignore all warnings
+warnings.filterwarnings("ignore")
 
 import pandas as pd
 import numpy as np
@@ -32,6 +35,7 @@ default_cnames = {
 
     # RS NUMBER
     'SNP': 'SNP',
+    'ID': 'SNP',
     'MARKERNAME': 'SNP',
     'SNPID': 'SNP',
     'RS': 'SNP',
@@ -60,6 +64,7 @@ default_cnames = {
     'EA': 'A1',
     # ALLELE 2
     'A2': 'A2',
+    'ALT': 'A2',
     'ALLELE2': 'A2',
     'ALLELE_2': 'A2',
     'OTHER_ALLELE': 'A2',
@@ -125,7 +130,10 @@ numeric_cols = ['P', 'N', 'N_CAS', 'N_CON', 'Z', 'OR', 'BETA', 'LOG_ODDS', 'INFO
 def read_header(fh):
     '''Read the first line of a file and returns a list with the column names.'''
     (openfunc, compression) = get_compression(fh)
-    return [x.rstrip('\n') for x in openfunc(fh).readline().split()]
+    if compression == 'gzip':
+        return [x.decode().rstrip('\n') for x in openfunc(fh).readline().split()]
+    else:
+        return [x.rstrip('\n') for x in openfunc(fh).readline().split()]
 
 
 def get_cname_map(flag, default, ignore):
